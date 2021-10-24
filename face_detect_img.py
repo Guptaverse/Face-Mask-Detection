@@ -46,7 +46,7 @@ found = 0 # Number of people who have face mask.
 
 
 for (x,y,w,h) in faces_rect: # Looping over all the faces colected.
-    cv.rectangle(frame_resized_img, (x,y), (x+w,y+h), (0,255,0), thickness=2)
+    # cv.rectangle(frame_resized_img, (x,y), (x+w,y+h), (0,255,0), thickness=2)
 
     # calling ismouth function to check weather any mouth is present in lower half of current face.
     # If none no mouth found in current face that means current person have face mask and vice-a-versa.
@@ -55,7 +55,7 @@ for (x,y,w,h) in faces_rect: # Looping over all the faces colected.
 
     if ans==0: 
         found+=1
-        cv.putText(frame_resized_img,"Found",(x+int(w/2),int(y+h+(h/5))),cv.FONT_HERSHEY_COMPLEX,1.0,(0,225,0),thickness=3)
+        cv.putText(frame_resized_img,"[*]",(x+int(w/2),int(y+h+(h/5))),cv.FONT_HERSHEY_COMPLEX,1.0,(0,225,0),thickness=3)
 
         
     
@@ -66,4 +66,4 @@ print(f'Mask found in {found} people.')
 cv.imshow('Detected mouth & face',frame_resized_img)
 
 # To hold window untill 'd' key is pressed.
-cv.waitKey(0) & 0xff('d')
+cv.waitKey(0)
